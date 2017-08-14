@@ -8,6 +8,7 @@ The formulas are available in the spreadsheet, but reiterated here for clarity:
 
 - One-Time Revenue = Sum of the one-time column of all revenue items
 - Monthly Revenue = Sum of the monthly column of all revenue items
+
 - One-Time Expense = Sum of the one-time column of all expense items
 - Monthly Expense = Sum of the monthly column of all expense items
 
