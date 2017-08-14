@@ -11,9 +11,76 @@ angular.module("app")
       const vm = this;
 
       vm.$onInit = onInit;
+      vm.addNewItem = addNewItem;
+      vm.deleteItem = deleteItem;
+
+      
 
       function onInit(){
-        console.log("you're in the component");
+        vm.itemsRev =[
+          {
+            name: "item 1",
+            oneTime: 550,
+            monthly: 2450,
+          },
+          {
+            name: "item 2",
+            oneTime: 120,
+            monthly: 1230,
+          },
+          {
+            name: "item 3",
+            oneTime: 400,
+            monthly: 5300,
+          }
+        ]
       }
+      vm.itemsExp =[
+        {
+          name: "item a",
+          oneTime: 45,
+          monthly: 350
+        },
+        {
+          name: "item b",
+          oneTime: 200,
+          monthly: 3500
+        },
+        {
+          name: "item c",
+          oneTime: 10,
+          monthly: 210
+        }
+      ]
+
+      function addNewItem(){
+
+      }
+
+      function deleteItem (arr, item){
+        var idx = 0;
+        for(let i=0; i<arr.length; i++){
+          if(arr.name === item.name){
+            idx =i;
+          }
+        }
+        arr.splice(idx,1);
+      }
+
+
     }
 })();
+
+//TODO:
+// - One-Time Revenue = Sum of the one-time column of all revenue items
+// - Monthly Revenue = Sum of the monthly column of all revenue items
+
+// - One-Time Expense = Sum of the one-time column of all expense items
+// - Monthly Expense = Sum of the monthly column of all expense items
+
+// - Total Revenue = One-Time Revenue + Monthly Revenue * 12
+// - Total Expenses = One-Time Expense + Monthly Expenses * 12
+// - Monthly Contribution Profit = Monthly Revenue – Monthly Expenses
+// - Total Contribution Profit = Total Revenue – Total Expenses
+// - Contribution Margin = Total Contribution Profit / Total Revenue
+// - Capital ROI (Months) = (One-Time Expenses – One-Time Revenue) / Monthly Contribution Profit

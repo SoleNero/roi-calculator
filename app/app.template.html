@@ -15,30 +15,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr ng-repeat="item in $ctrl.itemsRev">
+              <td>{{item.name}}</td>
+              <td>${{item.oneTime}}</td>
+              <td>${{item.monthly}}</td>
               <td>
-                <button type="button" class="btn btn-large btn-block btn-danger">Delete</button>
+                <button type="button" class="btn btn-large btn-block btn-danger" ng-click="$ctrl.deleteItem($ctrl.itemsRev, item)">Delete</button>
               </td>
             </tr>
           </tbody>
         </table>
         
-        <form action="" method="" class="form-inline" role="form">
+        <form class="form-inline" role="form" ng-submit="$ctrl.addNewItem()">
         
           <div class="form-group">
-            <label class="sr-only" for="item"></label>
-            <input type="email" class="form-control" id="item" placeholder="Item">
+            <label class="sr-only" for="name"></label>
+            <input type="text" class="form-control" id="name" placeholder="Item" ng-model="$ctrl.itemsRev.name">
           </div>
           <div class="form-group">
               <label class="sr-only" for="one-time"></label>
-              <input type="email" class="form-control" id="one-time" placeholder="One-time">
+              <input type="text" class="form-control" id="one-time" placeholder="One-time" ng-model="$ctrl.itemsRev.oneTime">
           </div>
           <div class="form-group">
               <label class="sr-only" for="monthly"></label>
-              <input type="email" class="form-control" id="monthly" placeholder="Monthly">
+              <input type="text" class="form-control" id="monthly" placeholder="Monthly" ng-model="$ctrl.itemsRev.monthly">
           </div>
         
           <button type="submit" class="add-button btn btn-primary">Add Revenue Item</button>
@@ -64,12 +64,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr ng-repeat="item in $ctrl.itemsExp">
+                <td>{{item.name}}</td>
+                <td>${{item.oneTime}}</td>
+                <td>${{item.monthly}}</td>
                 <td>
-                  <button type="button" class="btn btn-large btn-block btn-danger">Delete</button>
+                 <button type="button" class="btn btn-large btn-block btn-danger" ng-click="$ctrl.deleteItem($ctrl.itemsExp, item)">Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -78,16 +78,16 @@
           <form action="" method="" class="form-inline" role="form">
           
             <div class="form-group">
-              <label class="sr-only" for="item"></label>
-              <input type="email" class="form-control" id="item" placeholder="Item">
+              <label class="sr-only" for="name"></label>
+              <input type="text" class="form-control" id="name" placeholder="Item">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="one-time"></label>
-                <input type="email" class="form-control" id="one-time" placeholder="One-time">
+                <input type="text" class="form-control" id="one-time" placeholder="One-time">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="monthly"></label>
-                <input type="email" class="form-control" id="monthly" placeholder="Monthly">
+                <input type="text" class="form-control" id="monthly" placeholder="Monthly">
             </div>
           
             <button type="submit" class="add-button btn btn-primary">Add Expense Item</button>
