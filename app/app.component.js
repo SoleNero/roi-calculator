@@ -14,8 +14,6 @@ angular.module("app")
       vm.addNewItem = addNewItem;
       vm.deleteItem = deleteItem;
 
-      
-
       function onInit(){
         vm.itemsRev =[
           {
@@ -34,40 +32,45 @@ angular.module("app")
             monthly: 5300,
           }
         ]
+        vm.itemsExp =[
+          {
+            name: "item a",
+            oneTime: 45,
+            monthly: 350
+          },
+          {
+            name: "item b",
+            oneTime: 200,
+            monthly: 3500
+          },
+          {
+            name: "item c",
+            oneTime: 10,
+            monthly: 210
+          }
+        ]
+
+        vm.newItemRev = {};
+        vm.newItemExp = {};
       }
-      vm.itemsExp =[
-        {
-          name: "item a",
-          oneTime: 45,
-          monthly: 350
-        },
-        {
-          name: "item b",
-          oneTime: 200,
-          monthly: 3500
-        },
-        {
-          name: "item c",
-          oneTime: 10,
-          monthly: 210
+
+      function addNewItem(arr, newItem){
+        if (newItem === vm.newItemRev){
+          vm.itemsRev.push(newItem);
+        }else if(newItem === vm.newItemExp){
+          vm.itemsExp.push(newItem);
         }
-      ]
-
-      function addNewItem(){
-
       }
 
       function deleteItem (arr, item){
         var idx = 0;
         for(let i=0; i<arr.length; i++){
-          if(arr.name === item.name){
+          if(arr[i].name === item.name){
             idx =i;
           }
         }
         arr.splice(idx,1);
       }
-
-
     }
 })();
 
