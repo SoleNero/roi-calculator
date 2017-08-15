@@ -49,17 +49,28 @@ angular.module("app")
             monthly: 210
           }
         ]
-
         vm.newItemRev = {};
         vm.newItemExp = {};
       }
 
       function addNewItem(arr, newItem){
-        if (newItem === vm.newItemRev){
-          vm.itemsRev.push(newItem);
-        }else if(newItem === vm.newItemExp){
-          vm.itemsExp.push(newItem);
+        if(newItem === vm.newItemRev){
+          vm.itemsRev.push({
+            name: vm.newItem.name,
+            oneTime: vm.newItem.oneTime,
+            monthly: vm.newItem.monthly
+          });
         }
+        // else if(newItem === vm.newItemExp){
+        //   vm.itemsExp.push({
+        //     name: vm.newItem.name,
+        //     oneTime: vm.newItem.oneTime,
+        //     monthly: vm.newItem.monthly
+        //   });
+        // }
+        vm.newItem.name ="";
+        vm.newItem.oneTime ="";
+        vm.newItem.monthly="";
       }
 
       function deleteItem (arr, item){
