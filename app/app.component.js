@@ -61,13 +61,13 @@ angular.module("app")
             monthly: vm.newItem.monthly
           });
         }
-        // else if(newItem === vm.newItemExp){
-        //   vm.itemsExp.push({
-        //     name: vm.newItem.name,
-        //     oneTime: vm.newItem.oneTime,
-        //     monthly: vm.newItem.monthly
-        //   });
-        // }
+        else if(newItem === vm.newItemExp){
+          vm.itemsExp.push({
+            name: vm.newItem.name,
+            oneTime: vm.newItem.oneTime,
+            monthly: vm.newItem.monthly
+          });
+        }
         vm.newItem.name ="";
         vm.newItem.oneTime ="";
         vm.newItem.monthly="";
