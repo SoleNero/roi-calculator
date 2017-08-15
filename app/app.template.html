@@ -30,15 +30,15 @@
         
           <div class="form-group">
             <label class="sr-only" for="name"></label>
-            <input id="name" name="name" type="text" class="form-control" placeholder="Item" ng-model="$ctrl.newItem.name" required ng-minlength="3">
+            <input id="name" name="name" type="text" class="form-control" placeholder="Item" ng-model="$ctrl.newItemRev.name" required ng-minlength="3">
           </div>
           <div class="form-group">
               <label class="sr-only" for="one-time"></label>
-              <input id="one-time" name="one-time" type="text" class="form-control" placeholder="One-time" ng-model="$ctrl.newItem.oneTime" required ng-minlength="1">
+              <input id="one-time" name="one-time" type="number" class="form-control" placeholder="One-time" ng-model="$ctrl.newItemRev.oneTime" required ng-minlength="1">
           </div>
           <div class="form-group">
               <label class="sr-only" for="monthly"></label>
-              <input id="monthly" name="monthly" type="text" class="form-control" placeholder="Monthly" ng-model="$ctrl.newItem.monthly" required ng-minlength="1">
+              <input id="monthly" name="monthly" type="number" class="form-control" placeholder="Monthly" ng-model="$ctrl.newItemRev.monthly" required ng-minlength="1">
           </div>
         
           <input class="btn btn-primary" type="submit" ng-disabled="$ctrl.formRev.$invalid" value="Add Revenue Item">
@@ -80,15 +80,15 @@
           
             <div class="form-group">
               <label class="sr-only" for="name"></label>
-              <input id="name" name="name" type="text" class="form-control" placeholder="Item" ng-model="$ctrl.newItem.name" required ng-minlength="3">
+              <input id="name" name="name" type="text" class="form-control" placeholder="Item" ng-model="$ctrl.newItemExp.name" required ng-minlength="3">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="one-time"></label>
-                <input id="one-time" name="one-time" type="text" class="form-control" placeholder="One-time" ng-model="$ctrl.newItem.oneTime" required ng-minlength="1">
+                <input id="one-time" name="one-time" type="number" class="form-control" placeholder="One-time" ng-model="$ctrl.newItemExp.oneTime" required ng-minlength="1">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="monthly"></label>
-                <input id="monthly" name="monthly" type="text" class="form-control" placeholder="Monthly" ng-model="$ctrl.newItem.monthly" required ng-minlength="1">
+                <input id="monthly" name="monthly" type="number" class="form-control" placeholder="Monthly" ng-model="$ctrl.newItemExp.monthly" required ng-minlength="1">
             </div>   
             <input class="btn btn-primary" type="submit" ng-disabled="$ctrl.formExp.$invalid" value="Add Expense Item">      
           </form>  

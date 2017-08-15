@@ -56,21 +56,20 @@ angular.module("app")
       function addNewItem(arr, newItem){
         if(newItem === vm.newItemRev){
           vm.itemsRev.push({
-            name: vm.newItem.name,
-            oneTime: vm.newItem.oneTime,
-            monthly: vm.newItem.monthly
+            name: vm.newItemRev.name,
+            oneTime: vm.newItemRev.oneTime,
+            monthly: vm.newItemRev.monthly
           });
         }
         else if(newItem === vm.newItemExp){
           vm.itemsExp.push({
-            name: vm.newItem.name,
-            oneTime: vm.newItem.oneTime,
-            monthly: vm.newItem.monthly
+            name: vm.newItemExp.name,
+            oneTime: vm.newItemExp.oneTime,
+            monthly: vm.newItemExp.monthly
           });
         }
-        vm.newItem.name ="";
-        vm.newItem.oneTime ="";
-        vm.newItem.monthly="";
+        vm.newItemRev = {};
+        vm.newItemExp = {};
       }
 
       function deleteItem (arr, item){
