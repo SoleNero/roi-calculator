@@ -14,62 +14,55 @@ angular.module("app")
       vm.addNewItem = addNewItem;
       vm.deleteItem = deleteItem;
 
+      vm.newItemRev = {};
+      vm.newItemExp = {};
+
       function onInit(){
         vm.itemsRev =[
           {
             name: "item 1",
-            oneTime: 550,
+            once: 550,
             monthly: 2450,
           },
           {
             name: "item 2",
-            oneTime: 120,
+            once: 120,
             monthly: 1230,
           },
           {
             name: "item 3",
-            oneTime: 400,
+            once: 400,
             monthly: 5300,
           }
         ]
         vm.itemsExp =[
           {
             name: "item a",
-            oneTime: 45,
+            once: 45,
             monthly: 350
           },
           {
             name: "item b",
-            oneTime: 200,
+            once: 200,
             monthly: 3500
           },
           {
             name: "item c",
-            oneTime: 10,
+            once: 10,
             monthly: 210
           }
         ]
-        vm.newItemRev = {};
-        vm.newItemExp = {};
       }
 
       function addNewItem(arr, newItem){
         if(newItem === vm.newItemRev){
-          vm.itemsRev.push({
-            name: vm.newItemRev.name,
-            oneTime: vm.newItemRev.oneTime,
-            monthly: vm.newItemRev.monthly
-          });
+          vm.itemsRev.push(vm.newItemRev);
         }
         else if(newItem === vm.newItemExp){
-          vm.itemsExp.push({
-            name: vm.newItemExp.name,
-            oneTime: vm.newItemExp.oneTime,
-            monthly: vm.newItemExp.monthly
-          });
+          vm.itemsExp.push(vm.newItemExp);
         }
-        vm.newItemRev = {};
-        vm.newItemExp = {};
+        delete vm.newItemRev;
+        delete vm.newItemExp;
       }
 
       function deleteItem (arr, item){
@@ -82,6 +75,21 @@ angular.module("app")
         arr.splice(idx,1);
       }
     }
+
+    // function controller() {
+    //   const vm = this
+    
+    //   vm.$onInit = function () {
+    //     vm.users = []
+    //   }
+    
+    //   vm.deleteUser = function (e, user) {
+    //     e.preventDefault()
+    //     vm.users.splice(vm.users.indexOf(user), 1)
+    //   }
+    // }
+
+
 })();
 
 //TODO:

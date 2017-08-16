@@ -1,5 +1,6 @@
 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-  <!-- Revenue -->
+             
+<!-- Revenue output area -->
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="thumbnail">
       <div class="caption">
@@ -9,7 +10,7 @@
           <thead>
             <tr>
               <th>Item</th>
-              <th>One-Time</th>
+              <th>One-time</th>
               <th>Monthly</th>
               <th></th>
             </tr>
@@ -17,37 +18,89 @@
           <tbody>
             <tr ng-repeat="item in $ctrl.itemsRev">
               <td>{{item.name}}</td>
-              <td>${{item.oneTime}}</td>
+              <td>${{item.once}}</td>
               <td>${{item.monthly}}</td>
               <td>
-                <button type="button" class="btn btn-large btn-block btn-danger btn-sm" ng-click="$ctrl.deleteItem($ctrl.itemsRev, item)">Delete</button>
+                <button 
+                  type="button" 
+                  class="btn btn-large btn-block btn-danger btn-sm" 
+                  ng-click="$ctrl.deleteItem($ctrl.itemsRev, item)">Delete</button>
               </td>
             </tr>
           </tbody>
         </table>
-        
-        <form novalidate name="$ctrl.formRev" class="form-inline" ng-submit="$ctrl.addNewItem($ctrl.itemsRev, $ctrl.newItemRev)">
-        
+<!-- Revenue form -->
+        <form 
+          novalidate 
+          name="$ctrl.formRev" 
+          class="form-inline" 
+          ng-submit="$ctrl.addNewItem($ctrl.itemsRev, $ctrl.newItemRev)">    
+          <!-- ng-class="{'has-success': $ctrl.formRev.name.$valid, 'has-error': $ctrl.formRev.name.$touched && $ctrl.formRev.name.$invalid}"    -->
           <div class="form-group">
             <label class="sr-only" for="name"></label>
-            <input id="name" name="name" type="text" class="form-control" placeholder="Item" ng-model="$ctrl.newItemRev.name" required ng-minlength="3">
+            <input 
+              id="name" 
+              name="name" 
+              type="text" 
+              class="form-control" 
+              placeholder="Item" 
+              ng-model="$ctrl.newItemRev.name" 
+              required 
+              ng-minlength="3">
           </div>
           <div class="form-group">
-              <label class="sr-only" for="one-time"></label>
-              <input id="one-time" name="one-time" type="number" class="form-control" placeholder="One-time" ng-model="$ctrl.newItemRev.oneTime" required ng-minlength="1">
+              <label class="sr-only" for="once"></label>
+              <input 
+                id="once" 
+                name="once" 
+                type="number" 
+                class="form-control" 
+                placeholder="One-time" 
+                ng-model="$ctrl.newItemRev.once" 
+                required ng-minlength="1">
           </div>
           <div class="form-group">
               <label class="sr-only" for="monthly"></label>
-              <input id="monthly" name="monthly" type="number" class="form-control" placeholder="Monthly" ng-model="$ctrl.newItemRev.monthly" required ng-minlength="1">
-          </div>
-        
-          <input class="btn btn-primary" type="submit" ng-disabled="$ctrl.formRev.$invalid" value="Add Revenue Item">
+              <input 
+                id="monthly" 
+                name="monthly" 
+                type="number" 
+                class="form-control" 
+                placeholder="Monthly" 
+                ng-model="$ctrl.newItemRev.monthly" 
+                required ng-minlength="1">
+          </div>      
+          <input 
+            class="btn btn-primary" 
+            type="submit" 
+            ng-disabled="$ctrl.formRev.$invalid" 
+            value="Add Revenue Item">
         </form>  
+
+<!-- Revenue form validation -->
+        <div class="error-container" ng-show="$ctrl.formRev.name.$touched && $ctrl.formRev.name.$invalid">
+            <small class="error" ng-show="$ctrl.formRev.name.$error.required">
+            The item name is required.
+            </small>
+            <small class="error" ng-show="$ctrl.formRev.name.$error.minlength">
+            The item name is required to be at least 3 characters
+            </small>
+        </div>
+        <div class="error-container" ng-show="$ctrl.formRev.once.$touched && $ctrl.formRev.once.$invalid">
+          <small class="error" ng-show="$ctrl.formRev.once.$error.required">
+            The one-time revenue is required
+          </small>
+        </div>
+        <div class="error-container" ng-show="$ctrl.formRev.monthly.$touched && $ctrl.formRev.monthly.$invalid">
+            <small class="error" ng-show="$ctrl.formRev.monthly.$error.required">
+              The monthly revenue is required
+            </small>
+        </div>
       </div>
     </div>
   </div>
   
-  <!-- Expenses -->
+  <!-- Expenses output area -->
   
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="thumbnail">
@@ -66,40 +119,93 @@
             <tbody>
               <tr ng-repeat="item in $ctrl.itemsExp">
                 <td>{{item.name}}</td>
-                <td>${{item.oneTime}}</td>
+                <td>${{item.once}}</td>
                 <td>${{item.monthly}}</td>
                 <td>
-                 <button type="button" class="btn btn-large btn-block btn-danger btn-sm" ng-click="$ctrl.deleteItem($ctrl.itemsExp, item)">Delete</button>
+                 <button 
+                  type="button" 
+                  class="btn btn-large btn-block btn-danger btn-sm" 
+                  ng-click="$ctrl.deleteItem($ctrl.itemsExp, item)">Delete</button>
                 </td>
               </tr>
             </tbody>
           </table>
-          
-
-          <form novalidate name="$ctrl.formExp" class="form-inline" ng-submit="$ctrl.addNewItem($ctrl.itemsExp, $ctrl.newItemExp)">
-          
+                <!-- Expenses form -->
+          <form 
+            novalidate 
+            name="$ctrl.formExp" 
+            class="form-inline" 
+            ng-submit="$ctrl.addNewItem($ctrl.itemsExp, $ctrl.newItemExp)">        
             <div class="form-group">
               <label class="sr-only" for="name"></label>
-              <input id="name" name="name" type="text" class="form-control" placeholder="Item" ng-model="$ctrl.newItemExp.name" required ng-minlength="3">
+              <input 
+                id="name" 
+                name="name" 
+                type="text" 
+                class="form-control" 
+                placeholder="Item" 
+                ng-model="$ctrl.newItemExp.name" 
+                required 
+                ng-minlength="3">
             </div>
             <div class="form-group">
-                <label class="sr-only" for="one-time"></label>
-                <input id="one-time" name="one-time" type="number" class="form-control" placeholder="One-time" ng-model="$ctrl.newItemExp.oneTime" required ng-minlength="1">
+                <label class="sr-only" for="once"></label>
+                <input 
+                  id="once" 
+                  name="once" 
+                  type="number" 
+                  class="form-control" 
+                  placeholder="One-time" 
+                  ng-model="$ctrl.newItemExp.once" 
+                  required 
+                  ng-minlength="1">
             </div>
             <div class="form-group">
                 <label class="sr-only" for="monthly"></label>
-                <input id="monthly" name="monthly" type="number" class="form-control" placeholder="Monthly" ng-model="$ctrl.newItemExp.monthly" required ng-minlength="1">
+                <input 
+                  id="monthly" 
+                  name="monthly" 
+                  type="number" 
+                  class="form-control" 
+                  placeholder="Monthly" 
+                  ng-model="$ctrl.newItemExp.monthly" 
+                  required 
+                  ng-minlength="1">
             </div>   
-            <input class="btn btn-primary" type="submit" ng-disabled="$ctrl.formExp.$invalid" value="Add Expense Item">      
+            <input 
+              class="btn btn-primary" 
+              type="submit" 
+              ng-disabled="$ctrl.formExp.$invalid" 
+              value="Add Expense Item">            
           </form>  
+          <!-- Expenses form validation -->
+        <div class="error-container" ng-show="$ctrl.formExp.name.$touched && $ctrl.formExp.name.$invalid">
+            <small class="error" ng-show="$ctrl.formExp.name.$error.required">
+            The item name is required.
+            </small>
+            <small class="error" ng-show="$ctrl.formExp.name.$error.minlength">
+            The item name is required to be at least 3 characters
+            </small>
+        </div>
+        <div class="error-container" ng-show="$ctrl.formExp.once.$touched && $ctrl.formExp.once.$invalid">
+          <small class="error" ng-show="$ctrl.formExp.once.$error.required">
+            The one-time expense is required
+          </small>
+        </div>
+        <div class="error-container" ng-show="$ctrl.formExp.monthly.$touched && $ctrl.formRExp.monthly.$invalid">
+            <small class="error" ng-show="$ctrl.formExp.monthly.$error.required">
+              The monthly expenses is required
+            </small>
+        </div>
         </div>
       </div>
     </div>
 </div>
 
-<!-- <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5"> -->
-      <!-- Revenue Total -->
-        <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+
+          <!-- Revenue Total -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="thumbnail">
               <div class="caption">
                 <h3>Revenue Total</h3>      
@@ -113,16 +219,16 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>${{}}</td>
+                      <td>${{}}</td>
+                      <td>${{}}</td>
                     </tr>
                   </tbody>
                 </table>
                 
               </div>
             </div>
-          </div> -->
+          </div>
         
         <!-- Expenses Total -->
         
@@ -159,5 +265,5 @@
                   <p>Capital ROI (Months): </p>
                 </div>
               </div>
-            </div>
-</div> -->
+            </div> -->
+</div> 
