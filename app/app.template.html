@@ -1,3 +1,9 @@
+<!-- generic error messages -->
+<script type="text/ng-template" id="error-messages">
+  <div ng-message="required" class="error-msg">This field is required</div>
+  <div ng-message="minlength" class="error-msg">This field is too short</div>
+</script>
+
 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
              
 <!-- Revenue output area -->
@@ -34,8 +40,7 @@
           novalidate 
           name="$ctrl.formRev" 
           class="form-inline" 
-          ng-submit="$ctrl.addNewItem($ctrl.itemsRev, $ctrl.newItemRev)">    
-          <!-- ng-class="{'has-success': $ctrl.formRev.name.$valid, 'has-error': $ctrl.formRev.name.$touched && $ctrl.formRev.name.$invalid}"    -->
+          ng-submit="$ctrl.addNewItem($ctrl.itemsRev, $ctrl.newItemRev)">
           <div class="form-group">
             <label class="sr-only" for="name"></label>
             <input 
@@ -46,7 +51,10 @@
               placeholder="Item" 
               ng-model="$ctrl.newItemRev.name" 
               required 
-              ng-minlength="3">
+              minlength="3">
+              <div ng-messages="$ctrl.formRev.name.$error" ng-show="$ctrl.formRev.name.$touched" role="alert">
+                <div ng-messages-include="error-messages"></div>
+              </div>
           </div>
           <div class="form-group">
               <label class="sr-only" for="once"></label>
@@ -57,7 +65,11 @@
                 class="form-control" 
                 placeholder="One-time" 
                 ng-model="$ctrl.newItemRev.once" 
-                required ng-minlength="1">
+                required 
+                minlength="1">
+              <div ng-messages="$ctrl.formRev.once.$error" ng-show="$ctrl.formRev.once.$touched" role="alert">
+                <div ng-messages-include="error-messages"></div>
+              </div>    
           </div>
           <div class="form-group">
               <label class="sr-only" for="monthly"></label>
@@ -68,34 +80,18 @@
                 class="form-control" 
                 placeholder="Monthly" 
                 ng-model="$ctrl.newItemRev.monthly" 
-                required ng-minlength="1">
+                required 
+                minlength="1">
+              <div ng-messages="$ctrl.formRev.once.$error" ng-show="$ctrl.formRev.once.$touched" role="alert">
+                <div ng-messages-include="error-messages"></div>
+              </div>
           </div>      
           <input 
             class="btn btn-primary" 
             type="submit" 
-            ng-disabled="$ctrl.formRev.$invalid" 
+            ng-disabled="$ctrl.formRev.$invalid"
             value="Add Revenue Item">
         </form>  
-
-<!-- Revenue form validation -->
-        <div class="error-container" ng-show="$ctrl.formRev.name.$touched && $ctrl.formRev.name.$invalid">
-            <small class="error" ng-show="$ctrl.formRev.name.$error.required">
-            The item name is required.
-            </small>
-            <small class="error" ng-show="$ctrl.formRev.name.$error.minlength">
-            The item name is required to be at least 3 characters
-            </small>
-        </div>
-        <div class="error-container" ng-show="$ctrl.formRev.once.$touched && $ctrl.formRev.once.$invalid">
-          <small class="error" ng-show="$ctrl.formRev.once.$error.required">
-            The one-time revenue is required
-          </small>
-        </div>
-        <div class="error-container" ng-show="$ctrl.formRev.monthly.$touched && $ctrl.formRev.monthly.$invalid">
-            <small class="error" ng-show="$ctrl.formRev.monthly.$error.required">
-              The monthly revenue is required
-            </small>
-        </div>
       </div>
     </div>
   </div>
@@ -146,7 +142,10 @@
                 placeholder="Item" 
                 ng-model="$ctrl.newItemExp.name" 
                 required 
-                ng-minlength="3">
+                minlength="3">
+              <div ng-messages="$ctrl.formExp.name.$error" ng-show="$ctrl.formExp.name.$touched" role="alert">
+                <div ng-messages-include="error-messages"></div>
+              </div>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="once"></label>
@@ -158,7 +157,10 @@
                   placeholder="One-time" 
                   ng-model="$ctrl.newItemExp.once" 
                   required 
-                  ng-minlength="1">
+                  minlength="1">
+                <div ng-messages="$ctrl.formExp.once.$error" ng-show="$ctrl.formExp.once.$touched" role="alert">
+                  <div ng-messages-include="error-messages"></div>
+                </div>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="monthly"></label>
@@ -170,7 +172,10 @@
                   placeholder="Monthly" 
                   ng-model="$ctrl.newItemExp.monthly" 
                   required 
-                  ng-minlength="1">
+                  minlength="1">
+                <div ng-messages="$ctrl.formExp.monthly.$error" ng-show="$ctrl.formExp.monthly.$touched" role="alert">
+                  <div ng-messages-include="error-messages"></div>
+                </div>
             </div>   
             <input 
               class="btn btn-primary" 
@@ -178,25 +183,6 @@
               ng-disabled="$ctrl.formExp.$invalid" 
               value="Add Expense Item">            
           </form>  
-          <!-- Expenses form validation -->
-        <div class="error-container" ng-show="$ctrl.formExp.name.$touched && $ctrl.formExp.name.$invalid">
-            <small class="error" ng-show="$ctrl.formExp.name.$error.required">
-            The item name is required.
-            </small>
-            <small class="error" ng-show="$ctrl.formExp.name.$error.minlength">
-            The item name is required to be at least 3 characters
-            </small>
-        </div>
-        <div class="error-container" ng-show="$ctrl.formExp.once.$touched && $ctrl.formExp.once.$invalid">
-          <small class="error" ng-show="$ctrl.formExp.once.$error.required">
-            The one-time expense is required
-          </small>
-        </div>
-        <div class="error-container" ng-show="$ctrl.formExp.monthly.$touched && $ctrl.formRExp.monthly.$invalid">
-            <small class="error" ng-show="$ctrl.formExp.monthly.$error.required">
-              The monthly expenses is required
-            </small>
-        </div>
         </div>
       </div>
     </div>
