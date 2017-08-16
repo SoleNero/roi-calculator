@@ -13,6 +13,9 @@ angular.module("app")
       vm.$onInit = onInit;
       vm.addNewItem = addNewItem;
       vm.deleteItem = deleteItem;
+      vm.onceSum = onceSum;
+      vm.monthlySum = monthlySum;
+
 
       vm.newItemRev = {};
       vm.newItemExp = {};
@@ -52,6 +55,14 @@ angular.module("app")
             monthly: 210
           }
         ]
+        vm.onceSumRev = vm.onceSum(vm.itemsRev);
+        vm.monthlySumRev = vm.monthlySum(vm.itemsRev);
+        vm.totalRev = vm.onceSumRev + vm.monthlySumRev;
+
+        vm.onceSumExp = vm.onceSum(vm.itemsExp);
+        vm.monthlySumExp = vm.monthlySum(vm.itemsExp);
+        vm.totalExp = vm.onceSumExp + vm.monthlySumExp;
+
       }
 
       function addNewItem(arr, newItem){
@@ -74,30 +85,38 @@ angular.module("app")
         }
         arr.splice(idx,1);
       }
-    }
 
-    // function controller() {
-    //   const vm = this
-    
-    //   vm.$onInit = function () {
-    //     vm.users = []
-    //   }
-    
-    //   vm.deleteUser = function (e, user) {
-    //     e.preventDefault()
-    //     vm.users.splice(vm.users.indexOf(user), 1)
-    //   }
-    // }
+      function onceSum(arr){
+        var sum = 0;
+        for(var i=0; i< arr.length; i++){        
+          sum += arr[i].once;
+        }
+        return sum;
+      }
 
+      function monthlySum(arr){
+        var sum = 0;
+        for(var i=0; i< arr.length; i++){        
+          sum += arr[i].monthly;
+        }
+        return sum;
+      }
+
+      // function totalSum(num1, num2){
+      //   var total = num1 + num2;
+      //   return total;
+      // }
+
+  }
 
 })();
 
 //TODO:
-// - One-Time Revenue = Sum of the one-time column of all revenue items
-// - Monthly Revenue = Sum of the monthly column of all revenue items
+// - done One-Time Revenue = Sum of the one-time column of all revenue items
+// - done Monthly Revenue = Sum of the monthly column of all revenue items
 
-// - One-Time Expense = Sum of the one-time column of all expense items
-// - Monthly Expense = Sum of the monthly column of all expense items
+// - done One-Time Expense = Sum of the one-time column of all expense items
+// - done Monthly Expense = Sum of the monthly column of all expense items
 
 // - Total Revenue = One-Time Revenue + Monthly Revenue * 12
 // - Total Expenses = One-Time Expense + Monthly Expenses * 12
