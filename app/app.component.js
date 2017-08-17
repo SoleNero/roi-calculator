@@ -15,12 +15,15 @@ angular.module("app")
       vm.deleteItem = deleteItem;
       vm.onceSum = onceSum;
       vm.monthlySum = monthlySum;
-
+      vm.totalAmount = totalAmount;
+      vm.monthlyContributionProfit = monthlyContributionProfit;
+      vm.totalContributionProfit = totalContributionProfit;
 
       vm.newItemRev = {};
       vm.newItemExp = {};
 
       function onInit(){
+        // initialize default data
         vm.itemsRev =[
           {
             name: "item 1",
@@ -55,13 +58,18 @@ angular.module("app")
             monthly: 210
           }
         ]
+
+        // initialize calculations for default data
         vm.onceSumRev = vm.onceSum(vm.itemsRev);
         vm.monthlySumRev = vm.monthlySum(vm.itemsRev);
-        vm.totalRev = vm.onceSumRev + vm.monthlySumRev;
+        vm.totalRev = vm.totalAmount(vm.onceSumRev, vm.monthlySumRev);
 
         vm.onceSumExp = vm.onceSum(vm.itemsExp);
         vm.monthlySumExp = vm.monthlySum(vm.itemsExp);
-        vm.totalExp = vm.onceSumExp + vm.monthlySumExp;
+        vm.totalExp = vm.totalAmount(vm.onceSumExp, vm.monthlySumExp);
+
+        vm.monthlyContributionProfit(vm.monthlySumRev, vm.monthlySumExp);
+        vm.totalContributionProfit(vm.totalRev, vm.totalExp);
 
       }
 
@@ -102,10 +110,19 @@ angular.module("app")
         return sum;
       }
 
-      // function totalSum(num1, num2){
-      //   var total = num1 + num2;
-      //   return total;
-      // }
+      function totalAmount(num1, num2){
+        return (num1 + num2) *12;
+      }
+
+      function monthlyContributionProfit(num1, num2){
+        return num1 - num2;
+      }
+
+      function totalContributionProfit(num1, num2){
+        return num1 - num2;
+      }
+
+
 
   }
 
@@ -118,9 +135,9 @@ angular.module("app")
 // - done One-Time Expense = Sum of the one-time column of all expense items
 // - done Monthly Expense = Sum of the monthly column of all expense items
 
-// - Total Revenue = One-Time Revenue + Monthly Revenue * 12
-// - Total Expenses = One-Time Expense + Monthly Expenses * 12
-// - Monthly Contribution Profit = Monthly Revenue – Monthly Expenses
-// - Total Contribution Profit = Total Revenue – Total Expenses
+// - done Total Revenue = One-Time Revenue + Monthly Revenue * 12
+// - done Total Expenses = One-Time Expense + Monthly Expenses * 12
+// - done Monthly Contribution Profit = Monthly Revenue – Monthly Expenses
+// - done Total Contribution Profit = Total Revenue – Total Expenses
 // - Contribution Margin = Total Contribution Profit / Total Revenue
 // - Capital ROI (Months) = (One-Time Expenses – One-Time Revenue) / Monthly Contribution Profit
