@@ -234,7 +234,7 @@
                     <tr>
                       <td>{{$ctrl.onceSumRev | currency}}</td>
                       <td>{{$ctrl.monthlySumRev | currency}}</td>
-                      <td>{{$ctrl.totalRev * 12 | currency}}</td>
+                      <td>{{$ctrl.totalRev | currency}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -261,7 +261,7 @@
                       <tr>
                           <td>{{$ctrl.onceSumExp | currency}}</td>
                           <td>{{$ctrl.monthlySumExp | currency}}</td>
-                          <td>{{$ctrl.totalExp *12 | currency}}</td>
+                          <td>{{$ctrl.totalExp | currency}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -272,10 +272,10 @@
               <div class="thumbnail">
                 <div class="caption">
                   <h3>Contribution</h3>
-                  <p>Monthly Contribution Profit: </p>
-                  <p>Total Contribution Profit: </p>
-                  <p>Contribution Margin: </p>
-                  <p>Capital ROI (Months): </p>
+                  <p>Monthly Contribution Profit: {{$ctrl.monthlyContributionProfit | currency}}</p>
+                  <p>Total Contribution Profit: {{$ctrl.totalContributionProfit | currency}}</p>
+                  <p>Contribution Margin: {{$ctrl.contributionMargin}}%</p>
+                  <p>Capital ROI (Months): {{$ctrl.capitalROI}}</p>
                 </div>
               </div>
             </div>
