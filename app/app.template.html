@@ -4,6 +4,13 @@
   <div ng-message="minlength" class="error-msg">This field is too short</div>
 </script>
 
+<script>  webshims.setOptions('forms-ext', {
+    replaceUI: 'auto',
+    types: 'number'
+    });
+    webshims.polyfill('forms forms-ext');
+</script>
+
 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
              
 <!-- Revenue output area -->
@@ -43,6 +50,7 @@
           ng-submit="$ctrl.addNewItem($ctrl.itemsRev, $ctrl.newItemRev)">
           <div class="form-group">
             <label class="sr-only" for="name"></label>
+            <div class="input-group">
             <input 
               id="name" 
               name="name" 
@@ -52,27 +60,36 @@
               ng-model="$ctrl.newItemRev.name" 
               required 
               minlength="3">
+            </div>
               <div ng-messages="$ctrl.formRev.name.$error" ng-show="$ctrl.formRev.name.$touched" role="alert">
                 <div ng-messages-include="error-messages"></div>
               </div>
           </div>
           <div class="form-group">
               <label class="sr-only" for="once"></label>
-              <input 
-                id="once" 
-                name="once" 
-                type="number" 
-                class="form-control" 
-                placeholder="One-time" 
-                ng-model="$ctrl.newItemRev.once" 
-                required 
-                minlength="1">
+              <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input 
+                    id="once" 
+                    name="once" 
+                    type="number"
+                    class="form-control" 
+                    placeholder="One-time" 
+                    ng-model="$ctrl.newItemRev.once" 
+                    required 
+                    minlength="1"
+                    min="0" 
+                    step="0.01" 
+                    data-number-to-fixed="2">
+              </div>
               <div ng-messages="$ctrl.formRev.once.$error" ng-show="$ctrl.formRev.once.$touched" role="alert">
                 <div ng-messages-include="error-messages"></div>
               </div>    
           </div>
           <div class="form-group">
               <label class="sr-only" for="monthly"></label>
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
               <input 
                 id="monthly" 
                 name="monthly" 
@@ -81,7 +98,11 @@
                 placeholder="Monthly" 
                 ng-model="$ctrl.newItemRev.monthly" 
                 required 
-                minlength="1">
+                minlength="1"
+                min="0" 
+                step="0.01" 
+                data-number-to-fixed="2">
+              </div>
               <div ng-messages="$ctrl.formRev.once.$error" ng-show="$ctrl.formRev.once.$touched" role="alert">
                 <div ng-messages-include="error-messages"></div>
               </div>
@@ -90,7 +111,7 @@
             class="btn btn-primary" 
             type="submit" 
             ng-disabled="$ctrl.formRev.$invalid"
-            value="Add Revenue Item">
+            value="Add New Item">
         </form>  
       </div>
     </div>
@@ -149,6 +170,8 @@
             </div>
             <div class="form-group">
                 <label class="sr-only" for="once"></label>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
                 <input 
                   id="once" 
                   name="once" 
@@ -157,13 +180,19 @@
                   placeholder="One-time" 
                   ng-model="$ctrl.newItemExp.once" 
                   required 
-                  minlength="1">
+                  minlength="1"
+                  min="0" 
+                  step="0.01" 
+                  data-number-to-fixed="2">
+                </div>
                 <div ng-messages="$ctrl.formExp.once.$error" ng-show="$ctrl.formExp.once.$touched" role="alert">
                   <div ng-messages-include="error-messages"></div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="sr-only" for="monthly"></label>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
                 <input 
                   id="monthly" 
                   name="monthly" 
@@ -172,7 +201,11 @@
                   placeholder="Monthly" 
                   ng-model="$ctrl.newItemExp.monthly" 
                   required 
-                  minlength="1">
+                  minlength="1"
+                  min="0" 
+                  step="0.01" 
+                  data-number-to-fixed="2">
+                </div>
                 <div ng-messages="$ctrl.formExp.monthly.$error" ng-show="$ctrl.formExp.monthly.$touched" role="alert">
                   <div ng-messages-include="error-messages"></div>
                 </div>
@@ -181,7 +214,7 @@
               class="btn btn-primary" 
               type="submit" 
               ng-disabled="$ctrl.formExp.$invalid" 
-              value="Add Expense Item">            
+              value="Add New Item">            
           </form>  
         </div>
       </div>
