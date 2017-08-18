@@ -1,3 +1,12 @@
+body {
+  background-color: rgb(170, 167, 162);
+  font-family: 'Mada', sans-serif;
+}
+
+.table>tbody>tr>td{
+  font-size: 1.2em;
+}
+
 .error-msg.ng-enter {
   transition: 0.5s linear all;
   opacity: 0;
@@ -9,4 +18,33 @@
   color: maroon;
   font-weight: bold;
   padding: 0;
+}
+
+input.add-btn.btn.btn-primary,
+input.add-btn.btn.btn-primary.active{
+  background-color: #1ecd97;
+  background-image: linear-gradient(rgb(30, 205, 151) 0px, rgb(24, 169, 110) 100%);
+}
+
+button.del-btn.btn.btn-danger {
+  background-color: #f34541;
+  background-repeat: repeat-x;
+  background-image: linear-gradient(rgb(243, 69, 65) 0px, rgb(197, 53, 49) 100%);
+  font-size: 1em;
+}
+
+div.thumbnail {
+  background-color: rgb(218, 214, 207);
+}
+
+nav.custom-nav.navbar.navbar-default {
+  background-color: rgb(99, 90, 85);
+  background-image: none;
+  border: none;
+}
+
+p.custom-nav.navbar-brand,
+p.custom-nav.navbar-brand:hover {
+  color: rgb(244, 244, 244);
+  text-shadow: none;
 }

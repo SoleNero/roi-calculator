@@ -35,7 +35,7 @@
               <td>
                 <button 
                   type="button" 
-                  class="btn btn-large btn-block btn-danger btn-sm" 
+                  class="del-btn btn btn-large btn-block btn-danger btn-sm" 
                   ng-click="$ctrl.deleteItem($ctrl.itemsRev, item)">Delete</button>
               </td>
             </tr>
@@ -107,7 +107,7 @@
               </div>
           </div>      
           <input 
-            class="btn btn-primary" 
+            class="add-btn btn btn-primary" 
             type="submit" 
             ng-disabled="$ctrl.formRev.$invalid"
             value="Add New Item">
@@ -137,7 +137,7 @@
                 <td>
                  <button 
                   type="button" 
-                  class="btn btn-large btn-block btn-danger btn-sm" 
+                  class="del-btn btn btn-large btn-block btn-danger btn-sm" 
                   ng-click="$ctrl.deleteItem($ctrl.itemsExp, item)">Delete</button>
                 </td>
               </tr>
@@ -207,7 +207,7 @@
                 </div>
             </div>   
             <input 
-              class="btn btn-primary" 
+              class="add-btn btn btn-primary" 
               type="submit" 
               ng-disabled="$ctrl.formExp.$invalid" 
               value="Add New Item">            
@@ -272,10 +272,14 @@
               <div class="thumbnail">
                 <div class="caption">
                   <h3>Contribution</h3>
-                  <p>Monthly Contribution Profit: {{$ctrl.monthlyContributionProfit | currency}}</p>
-                  <p>Total Contribution Profit: {{$ctrl.totalContributionProfit | currency}}</p>
-                  <p>Contribution Margin: {{$ctrl.contributionMargin}}%</p>
-                  <p>Capital ROI (Months): {{$ctrl.capitalROI}}</p>
+                  <table class="table table-bordered table-hover">
+                    <tbody>
+                      <td class="col-sm-3">Monthly Contribution Profit: {{$ctrl.monthlyContributionProfit | currency}}</td>
+                      <td class="col-sm-3">Total Contribution Profit: {{$ctrl.totalContributionProfit | currency}}</td>
+                      <td class="col-sm-3">Contribution Margin: {{$ctrl.contributionMargin}}%</td>
+                      <td class="col-sm-3">Capital ROI (Months): {{$ctrl.capitalROI}}</td>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
